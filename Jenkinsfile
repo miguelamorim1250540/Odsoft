@@ -62,12 +62,14 @@ pipeline {
             steps {
                 echo '🐳 Deploy ambiente STAGING via Docker...'
                 sh '''
+                # Para evitar conflito de portas
+                pkill -f "psoft-g1.*dev" || true
                 docker-compose -f docker-compose-staging.yml down || true
                 docker-compose -f docker-compose-staging.yml up -d --build
                 '''
             }
         }
-
+        
         stage('Deploy - PROD (remoto)') {
             steps {
                 echo '🌍 Deploy ambiente PROD (servidor remoto)...'
