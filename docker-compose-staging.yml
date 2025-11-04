@@ -1,25 +1,10 @@
 version: '3.8'
 
 services:
-  mysql:
-    image: mysql:8
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: psoftdb
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql
-
   app:
     build: .
-    image: psoft-app
-    depends_on:
-      - mysql
+    container_name: psoft_app
     ports:
-      - "9090:8080"
+      - "8080:8080"
     environment:
-      SPRING_PROFILES_ACTIVE: staging
-
-volumes:
-  mysql-data:
+      - SPRING_PROFILES_ACTIVE=staging
