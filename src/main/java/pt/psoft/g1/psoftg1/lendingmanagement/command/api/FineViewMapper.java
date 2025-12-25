@@ -1,4 +1,4 @@
-package pt.psoft.g1.psoftg1.lendingmanagement.api;
+package pt.psoft.g1.psoftg1.lendingmanagement.command.api;
 
 import org.mapstruct.*;
 import pt.psoft.g1.psoftg1.lendingmanagement.model.Fine;

@@ -1,4 +1,4 @@
-package pt.psoft.g1.psoftg1.lendingmanagement.api;
+package pt.psoft.g1.psoftg1.lendingmanagement.command.api;
 
 import lombok.Data;
 import lombok.Setter;

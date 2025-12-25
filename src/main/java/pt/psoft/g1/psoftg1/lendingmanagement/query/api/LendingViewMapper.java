@@ -1,4 +1,4 @@
-package pt.psoft.g1.psoftg1.lendingmanagement.api;
+package pt.psoft.g1.psoftg1.lendingmanagement.query.api;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
