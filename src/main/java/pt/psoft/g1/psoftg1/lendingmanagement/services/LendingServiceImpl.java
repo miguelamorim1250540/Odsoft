@@ -13,6 +13,9 @@ import pt.psoft.g1.psoftg1.lendingmanagement.repositories.FineRepository;
 import pt.psoft.g1.psoftg1.lendingmanagement.repositories.LendingRepository;
 import pt.psoft.g1.psoftg1.readermanagement.repositories.ReaderRepository;
 import pt.psoft.g1.psoftg1.shared.services.Page;
+import pt.psoft.g1.psoftg1.lendingmanagement.services.SetLendingReturnedRequest;
+import pt.psoft.g1.psoftg1.lendingmanagement.services.LendingService;
+
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -83,20 +86,19 @@ public class LendingServiceImpl implements LendingService{
     }
 
     @Override
-    public Lending setReturned(final String lendingNumber, final SetLendingReturnedRequest resource, final long desiredVersion) {
-
+    public Lending setReturned(String lendingNumber, SetLendingReturnedRequest resource, long desiredVersion) {
         var lending = lendingRepository.findByLendingNumber(lendingNumber)
                 .orElseThrow(() -> new NotFoundException("Cannot update lending with this lending number"));
 
-        lending.setReturned(desiredVersion, resource.getCommentary());
+        lending.setReturned(desiredVersion, resource.getCommentary(), resource.getRating());
 
-        if(lending.getDaysDelayed() > 0){
-            final var fine = new Fine(lending);
-            fineRepository.save(fine);
+        if (lending.getDaysDelayed() > 0) {
+            fineRepository.save(new Fine(lending));
         }
 
         return lendingRepository.save(lending);
     }
+
 
     @Override
     public Double getAverageDuration(){
@@ -150,7 +152,5 @@ public class LendingServiceImpl implements LendingService{
                 endDate);
 
     }
-
-
 
 }

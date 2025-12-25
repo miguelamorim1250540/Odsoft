@@ -7,11 +7,17 @@ import pt.psoft.g1.psoftg1.lendingmanagement.model.Lending;
 import pt.psoft.g1.psoftg1.readermanagement.services.ReaderService;
 
 /**
- * Brief guide:
- * <a href="https://www.baeldung.com/mapstruct">https://www.baeldung.com/mapstruct</a>
- * */
+ * Mapper for Lending command operations
+ * Guides:
+ *  - https://www.baeldung.com/mapstruct
+ *  - https://medium.com/@susantamon/mapstruct-a-comprehensive-guide-in-spring-boot-context-1e7202da033e
+ */
 @Mapper(componentModel = "spring", uses = {BookService.class, ReaderService.class})
 public abstract class LendingMapper {
+
+    /**
+     * Partial update of Lending for setting as returned
+     */
     public abstract void update(SetLendingReturnedRequest request, @MappingTarget Lending lending);
 
 }

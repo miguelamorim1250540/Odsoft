@@ -11,5 +11,4 @@ public class LendingLinksView {
     private Map<String, String> self;
     private Map<String, String> book;
     private Map<String, String> reader;
-
 }

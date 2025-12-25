@@ -13,5 +13,6 @@ import lombok.NoArgsConstructor;
 public class SetLendingReturnedRequest {
     @Size(max = 1024)
     private String commentary;
+    private Integer rating;
 
 }

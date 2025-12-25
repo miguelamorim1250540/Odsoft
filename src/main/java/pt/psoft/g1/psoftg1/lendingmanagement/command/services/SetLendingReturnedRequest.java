@@ -1,17 +1,11 @@
 package pt.psoft.g1.psoftg1.lendingmanagement.command.services;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-@Data
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
-@Schema(description = "A DTO for setting a Lending as returned")
 public class SetLendingReturnedRequest {
-    @Size(max = 1024)
-    private String commentary;
-
+    private final String commentary;
+    private final Integer rating;
 }

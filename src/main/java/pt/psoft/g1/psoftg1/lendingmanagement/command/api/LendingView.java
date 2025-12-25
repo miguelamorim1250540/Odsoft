@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDate;
 
 @Data
@@ -30,20 +29,11 @@ public class LendingView {
 
     private Integer daysOverdue;
 
+    private Integer rating;
+
     private Integer fineValueInCents;
 
     @Setter
     @Getter
     private LendingLinksView _links;
 }
-
-/*>
-A: a ambos deve ser facultado:
->- lending number
->- book title
->- lending date
->- return date
->- number of days till return date (if applicable)
->- number of days in overdue (if applicable)
->- fine amount (if applicable)
-*/
